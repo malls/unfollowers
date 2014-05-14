@@ -22,7 +22,7 @@ unfollowers = {}
 followers = []
 keys = redis.keys('*')
 
-client.followers('percoset').each do |x|
+client.followers(ENV('watched_account')).each do |x|
   puts x.username
   redis.set(x.username, true)
   followers << x.username
